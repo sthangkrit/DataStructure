@@ -1,0 +1,81 @@
+61050192 ธนพล กฤตินัดดากุล
+import java.util.Scanner;
+
+public class Stack_LinkedList {// First in Last out
+
+	class Node {
+		int data;
+		Node next;
+
+		Node() {
+		}
+
+		Node(int data) {
+			this.data = data;
+		}
+	}
+
+	Node head = null;
+
+	boolean isEmpty() {
+		return head == null;
+	}
+
+	boolean isFull() { // For LinkedList We don't use it
+		return false;
+	}
+
+	void push(int d) {
+		Node p = new Node(d);
+		p.next = head;
+		head = p;
+	}
+
+	int pop() {
+		int d = head.data;
+		head = head.next;
+		return d;
+	}
+
+	int top() { // head ชี้ตัวใหม่
+		return head.data;
+	}
+
+	public void get(Node p) { // just for show
+		Node temp = p;
+		if (temp == null)
+			System.out.println("Null");
+		else {
+			do {
+				System.out.println(temp.data);
+				temp = temp.next;
+			} while (temp != null);
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Stack_LinkedList a = new Stack_LinkedList();
+
+		System.out.print("Num : ");
+		int n = sc.nextInt();
+
+		for (int i = 1; i <= n; i++) {
+			System.out.print(i + " : ");
+			int num = sc.nextInt();
+			a.push(num);
+		}
+		System.out.println("==========");
+		a.get(a.head);
+		a.pop();
+		System.out.println("==========");
+		a.get(a.head);
+		System.out.println("==========");
+		a.push(9999);
+		a.get(a.head);
+		System.out.println("==========");
+		System.out.println(a.top());
+	}
+
+}
+

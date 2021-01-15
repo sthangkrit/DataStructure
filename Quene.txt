@@ -1,0 +1,86 @@
+61050192 ธนพล กฤตินัดดากุล
+import java.util.Scanner;
+
+public class Quene_LinkesList { // First in First out
+	class Node {
+		int data;
+		Node next;
+
+		Node() {
+		}
+
+		Node(int data) {
+			this.data = data;
+		}
+	}
+
+	Node front = null, back =null; // front is head the first in // back is the last one
+
+
+	boolean isEmpty() {
+		return back == null;
+	}
+
+	boolean isFull() { // For LinkedList We don't use it
+		return false;
+	}
+
+	void enquene(int d) { // เอาเข้า
+		Node p = new Node(d);
+		if (isEmpty()) {
+			front = back = p;
+		} else {
+			back.next = p; // ชี้ไปตัวใหม่
+			back = p;
+		}
+	}
+
+	int dequene() {
+		Node p = new Node();
+		int d = front.data;
+		front = front.next;
+		return d;
+	}
+	
+	int front() {   //front ชี้ตัวเก่าสุด
+		return front.data;
+	}
+
+	public void get(Node p) { // just for show
+		Node temp = p;
+		if (temp == null)
+			System.out.println("Null");
+		else {
+			do {
+				System.out.println(temp.data);
+				temp = temp.next;
+			} while (temp != null);
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Quene_LinkesList a = new Quene_LinkesList();
+		System.out.print("Num : ");
+		int n = sc.nextInt();
+
+		for (int i = 1; i <= n; i++) {
+			System.out.print(i + " : ");
+			int num = sc.nextInt();
+			a.enquene(num);
+		}
+		System.out.println("=========");
+		a.get(a.front);
+		a.dequene();
+		System.out.println("=========");
+		a.get(a.front);
+		a.enquene(999);
+		System.out.println("=========");
+		a.get(a.front);
+		System.out.println("=========");
+		System.out.println(a.front());
+		
+	}
+
+}
+

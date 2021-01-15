@@ -1,0 +1,31 @@
+scan itemnum
+if (itemnum >20)print error         // check item
+else 
+	double[] items = [20];	    // create array 20 0-19
+	double totalprice = 0;
+	double totalvat=0;
+	double total =0;
+	foreach (int i in items)
+        {
+          items[i]  = scan price
+        } // loop input price
+
+	print price    vat    item total    จัดช่องเอง
+	print -------- ------- --------
+
+	foreach (int i in items){
+	  if ( items[i] >= 100  )
+		{ print items[i]             items[i]*0.07    (items[i]*0.07)+items[i]  
+		  totalvat += items[i]*0.07;
+		  totalprice += (items[i]*0.07)+items[i] items[i];	
+		}
+	  else {print items[i]   0   items[i]
+		totalvat += 0;
+		totalprice += items[i];	
+		}
+
+		totalprice += items[i];
+	}
+	print --------- -------- --------
+	print totalprice   totalvat     total   
+
